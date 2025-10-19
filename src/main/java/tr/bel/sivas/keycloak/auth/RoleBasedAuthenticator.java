@@ -47,7 +47,7 @@ public class RoleBasedAuthenticator implements Authenticator {
         } else {
             // Rol yoksa, hata mesajını kullanıcıya göster
             Response errorResponse = context.form()
-                    .setError("Uygulamaya erişim için gerekli rol ve yetki yok yok. Yönetici ile iletişime geçin.")
+                    .setError("Uygulamaya erişim için gerekli rol ve yetki yok. Yönetici ile iletişime geçin.")
                     .createErrorPage(Response.Status.FORBIDDEN);
             context.failure(AuthenticationFlowError.ACCESS_DENIED, errorResponse);
             context.getEvent().error("Kullanıcı gerekli role sahip değil: " + requiredRole);
