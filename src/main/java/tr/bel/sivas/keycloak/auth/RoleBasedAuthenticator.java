@@ -34,7 +34,7 @@ public class RoleBasedAuthenticator implements Authenticator {
         if (role == null) {
             // Rol yoksa, hata mesajını kullanıcıya göster
             Response errorResponse = context.form()
-                    .setError("Uygulama için gerekli rol yoktur. Yönetici ile iletişime geçin. Gerekli Rol(Realm): "+requiredRole)
+                    .setError("Uygulama için gerekli erişim rolü  yoktur. Yönetici ile iletişime geçin.")
                     .createErrorPage(Response.Status.FORBIDDEN);
             context.failure(AuthenticationFlowError.CLIENT_NOT_FOUND, errorResponse);
             context.getEvent().error("Yetkili rolü bulunamadı: " + requiredRole);
@@ -47,7 +47,7 @@ public class RoleBasedAuthenticator implements Authenticator {
         } else {
             // Rol yoksa, hata mesajını kullanıcıya göster
             Response errorResponse = context.form()
-                    .setError("Uygulamaya erişim izniniz yok. Yönetici ile iletişime geçin. Gerekli Rol(Realm): "+requiredRole)
+                    .setError("Uygulamaya erişim için gerekli rol ve yetki yok yok. Yönetici ile iletişime geçin.")
                     .createErrorPage(Response.Status.FORBIDDEN);
             context.failure(AuthenticationFlowError.ACCESS_DENIED, errorResponse);
             context.getEvent().error("Kullanıcı gerekli role sahip değil: " + requiredRole);
